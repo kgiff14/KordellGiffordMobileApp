@@ -1,4 +1,5 @@
 ﻿using KordellGiffordMobileApp.Models;
+using Plugin.LocalNotifications;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -114,6 +115,33 @@ namespace KordellGiffordMobileApp.ViewModels
             catch
             {
                 return null;
+            }
+        }
+
+
+        public void Notifications()
+        {
+            GetNotificationSettings();
+            if (!notify.NotifyOn)
+            {
+                return;
+            }
+            int count = 0;
+            GetDates();
+            for (var i = 0; i < courseStartDates.Count; i++)
+            {
+                CrossLocalNotifications.Current.Show(courseStartDates[i].Item1, "You course is starting soon!\n" + courseStartDates[i].Item2.ToString("MMM dd, yyyy"), count, courseStartDates[i].Item2.AddDays(-notify.NotifyDay));
+                count++;
+            }
+            for (var i = 0; i < courseEndDates.Count; i++)
+            {
+                CrossLocalNotifications.Current.Show(courseEndDates[i].Item1, "You course is ending soon!\n" + courseEndDates[i].Item2.ToString("MMM dd, yyyy"), count, courseEndDates[i].Item2.AddDays(-notify.NotifyDay));
+                count++;
+            }
+            for (var i = 0; i < assessmentDueDates.Count; i++)
+            {
+                CrossLocalNotifications.Current.Show(assessmentDueDates[i].Item1, "You assessment is due soon!\n" + assessmentDueDates[i].Item2.ToString("MMM dd, yyyy"), count, assessmentDueDates[i].Item2.AddDays(-notify.NotifyDay));
+                count++;
             }
         }
     }
