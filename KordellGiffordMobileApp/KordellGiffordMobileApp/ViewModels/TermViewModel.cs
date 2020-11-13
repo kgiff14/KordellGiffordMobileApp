@@ -19,58 +19,82 @@ namespace KordellGiffordMobileApp.ViewModels
 
         public ObservableCollection<TermModel> GetAllTerms()
         {
-            Terms.Clear();
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                conn.CreateTable<TermModel>();
-                Terms = new ObservableCollection<TermModel>(conn.Table<TermModel>().ToList());
+                Terms.Clear();
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    conn.CreateTable<TermModel>();
+                    Terms = new ObservableCollection<TermModel>(conn.Table<TermModel>().ToList());
                  
-                return Terms;
+                    return Terms;
+                }
             }
+            catch { return null; }
         }
 
         public void AddTerm(TermModel term)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                conn.Insert(term);
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    conn.Insert(term);
+                }
             }
+            catch { }
         }
 
         public void UpdateTerm(TermModel term)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                conn.Update(term);
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    conn.Update(term);
+                }
             }
+            catch { }
         }
 
         public void DeleteTerm(TermModel term)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                conn.Delete(term);
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    conn.Delete(term);
+                }
             }
+            catch { }
         }
 
         public ObservableCollection<CourseModel> GetTermCourses(int termId)
         {
-            TermCourses.Clear();
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                var results = conn.Table<CourseModel>().ToList();
-                TermCourses = new ObservableCollection<CourseModel>(results.Where(x => x.TermId == termId).ToList());
+                TermCourses.Clear();
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    var results = conn.Table<CourseModel>().ToList();
+                    TermCourses = new ObservableCollection<CourseModel>(results.Where(x => x.TermId == termId).ToList());
 
-                return TermCourses;
+                    return TermCourses;
+                }
             }
+            catch { return null; }
         }
 
         public void DeleteTermCourse(CourseModel course)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                conn.Delete(course);
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    conn.Delete(course);
+                }
             }
+            catch { }
         }
     }
 }

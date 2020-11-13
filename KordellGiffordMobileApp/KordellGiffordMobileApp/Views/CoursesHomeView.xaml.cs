@@ -21,6 +21,7 @@ namespace KordellGiffordMobileApp.Views
         public CoursesHomeView()
         {
             InitializeComponent();
+            HardcodeCheck();
             Notifications();
             BindingContext = viewModel;
             SetTermsAndClasses();
@@ -92,6 +93,13 @@ namespace KordellGiffordMobileApp.Views
                 CrossLocalNotifications.Current.Show(notifyViewModel.assessmentDueDates[i].Item1, "You assessment is due soon!\n" + notifyViewModel.assessmentDueDates[i].Item2.ToString("MMM dd, yyyy"), count, notifyViewModel.assessmentDueDates[i].Item2.AddDays(-notifyViewModel.notify.NotifyDay));
                 count++;
             }
+        }
+
+        void HardcodeCheck()
+        {
+            viewModel.GetAllTerms();
+            viewModel.GetTermCourses(0);
+            notifyViewModel.GetNotificationSettings();
         }
     }
 }

@@ -15,19 +15,39 @@ namespace KordellGiffordMobileApp.ViewModels
 
         public void GetNotificationSettings()
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                var results = conn.Table<NotificationModel>().ToList();
-                notify.NotifyOn = results[0].NotifyOn;
-                notify.NotifyDay = results[0].NotifyDay;
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    var results = conn.Table<NotificationModel>().ToList();
+                    notify.NotifyOn = results[0].NotifyOn;
+                    notify.NotifyDay = results[0].NotifyDay;
+                }
+            }
+            catch
+            {
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    conn.CreateTable<NotificationModel>();
+                    notify.NotifyOn = true;
+                    notify.NotifyDay = 5;
+                    conn.Insert(notify);
+                }
             }
         }
 
         public void UpdateNotificationSettings(NotificationModel notification)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                conn.Update(notification);
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    conn.Update(notification);
+                }
+            }
+            catch
+            {
+                return;
             }
         }
 
@@ -40,39 +60,60 @@ namespace KordellGiffordMobileApp.ViewModels
 
         public List<Tuple<string, DateTime>> GetCourseStartDates()
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                var results = conn.Table<CourseModel>().ToList();
-                for (var i = 0; i < results.Count; i++)
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
                 {
-                    courseStartDates.Add(new Tuple<string, DateTime>(results[i].CourseName, results[i].CourseStartDate));
+                    var results = conn.Table<CourseModel>().ToList();
+                    for (var i = 0; i < results.Count; i++)
+                    {
+                        courseStartDates.Add(new Tuple<string, DateTime>(results[i].CourseName, results[i].CourseStartDate));
+                    }
+                    return courseStartDates;
                 }
-                return courseStartDates;
+            }
+            catch
+            {
+                return null;
             }
         }
         public List<Tuple<string, DateTime>> GetCourseEndDates()
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                var results = conn.Table<CourseModel>().ToList();
-                for (var i = 0; i < results.Count; i++)
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
                 {
-                    courseEndDates.Add(new Tuple<string, DateTime>(results[i].CourseName, results[i].CourseEndDate));
+                    var results = conn.Table<CourseModel>().ToList();
+                    for (var i = 0; i < results.Count; i++)
+                    {
+                        courseEndDates.Add(new Tuple<string, DateTime>(results[i].CourseName, results[i].CourseEndDate));
+                    }
+                    return courseEndDates;
                 }
-                return courseEndDates;
+            }
+            catch
+            {
+                return null;
             }
         }
         public List<Tuple<string, DateTime>> GetAssessmentDueDates()
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                var results = conn.Table<CourseModel>().ToList();
-                for (var i = 0; i < results.Count; i++)
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
                 {
-                    assessmentDueDates.Add(new Tuple<string, DateTime>(results[i].OAName, results[i].OADate));
-                    assessmentDueDates.Add(new Tuple<string, DateTime>(results[i].PAName, results[i].PADate));
+                    var results = conn.Table<CourseModel>().ToList();
+                    for (var i = 0; i < results.Count; i++)
+                    {
+                        assessmentDueDates.Add(new Tuple<string, DateTime>(results[i].OAName, results[i].OADate));
+                        assessmentDueDates.Add(new Tuple<string, DateTime>(results[i].PAName, results[i].PADate));
+                    }
+                    return assessmentDueDates;
                 }
-                return assessmentDueDates;
+            }
+            catch
+            {
+                return null;
             }
         }
     }
