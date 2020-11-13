@@ -23,7 +23,7 @@ namespace KordellGiffordMobileApp.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            string fileName = "DB.db";
+            string fileName = "DB8.db";
             string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);
             string fullPath = Path.Combine(folderPath, fileName);
 

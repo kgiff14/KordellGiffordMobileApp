@@ -14,22 +14,30 @@ namespace KordellGiffordMobileApp.ViewModels
 
         public ObservableCollection<CourseModel> GetCourses()
         {
-            Courses.Clear();
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                Courses = new ObservableCollection<CourseModel>(conn.Table<CourseModel>().ToList());
-            }
+                Courses.Clear();
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    Courses = new ObservableCollection<CourseModel>(conn.Table<CourseModel>().ToList());
+                }
 
-            return Courses;
+                return Courses;
+            }
+            catch { return null; }
         }
 
         public void AddCourse(CourseModel course)
         {
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            try
             {
-                conn.CreateTable<CourseModel>();
-                conn.Insert(course);
+                using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+                {
+                    conn.CreateTable<CourseModel>();
+                    conn.Insert(course);
+                }
             }
+            catch { return; }
         }
     }
 }
