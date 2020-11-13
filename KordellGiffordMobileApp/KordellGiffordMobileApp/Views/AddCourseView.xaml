@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KordellGiffordMobileApp.Views.AddCourseView"
+             Title="Add Course">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Add" Clicked="Add_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <ScrollView VerticalScrollBarVisibility="Always">
+            <StackLayout Margin="5">
+                
+                <Label Text="Course Information:"
+                       Margin="10"/>
+                <Picker ItemDisplayBinding="{Binding TermName}"
+                x:Name="PickerTerm"
+                Title="Select Term to include course."/>
+                <!--SelectedIndexChanged="OnPickerSelectedIndexChanged"-->
+                <Entry x:Name="courseNameEntry"
+                       Placeholder="Course Name"/>
+                <Label Text="Course Start Date:"/>
+                <DatePicker x:Name="courseStartDate"/>
+                <Label Text="Course End Date"/>
+                <DatePicker x:Name="courseEndDate"/>
+
+
+                <Label Text="Course Status"/>
+                <Picker x:Name="statusPicker"
+                        Title="Course Status">
+                    <Picker.Items>
+                        <x:String>In Progress</x:String>
+                        <x:String>Completed</x:String>
+                        <x:String>Dropped</x:String>
+                        <x:String>Plan to Take</x:String>
+                    </Picker.Items>
+                </Picker>
+                
+                
+                <Label Text="Instructor Information:"
+                       Margin="10"/>
+                <Entry x:Name="instructorNameEntry"
+                       Placeholder="Instructor Name"/>
+                <Entry x:Name="instructorPhoneEntry"
+                       Placeholder="Instructore Phone"/>
+                <Entry x:Name="instructorEmailEntry"
+                       Placeholder="Instructor Email"/>
+
+                <Label Text="Assessment Information:"
+                       Margin="10"/>
+                <Entry x:Name="oaNameEntry"
+                       Placeholder="Objective Assessment Name"/>
+                <Editor x:Name="oaDetailsEditor"
+                        Placeholder="Objective Assessment Details"
+                        AutoSize="TextChanges"/>
+                <Label Text="Due Date:"/>
+                <DatePicker x:Name="oaDueDate"/>
+                <Entry x:Name="paNameEntry"
+                       Placeholder="Performance Assessment Name"/>
+                <Editor x:Name="paDetailsEditor"
+                        Placeholder="Performance Assessment Details"
+                        AutoSize="TextChanges"/>
+                <Label Text="Due Date:"/>
+                <DatePicker x:Name="paDueDate"/>
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

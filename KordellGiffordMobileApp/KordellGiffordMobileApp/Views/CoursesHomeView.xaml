@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KordellGiffordMobileApp.Views.CoursesHomeView"
+             Title="Home">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Notifications"
+                     Clicked="Notify_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout Margin="5">
+            <Label Text="Viewing Term: "/>
+            <Picker ItemDisplayBinding="{Binding TermName}"
+                x:Name="PickerTerm"
+                SelectedIndexChanged="OnPickerSelectedIndexChanged"
+                    Title="Look Ahead"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Label Text="Start Date:"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+                <Label Text="End Date:"
+                   Grid.Row="0"
+                   Grid.Column="1"/>
+                <Label Grid.Row="1"
+                   Grid.Column="0"
+                   x:Name="startLabel"/>
+                <Label Grid.Row="1"
+                   Grid.Column="1"
+                   x:Name="endLabel"/>
+            </Grid>
+            <Label Text="Courses:"
+               Margin="10"/>
+            <ListView x:Name="MyListView"
+                  CachingStrategy="RecycleElement"
+                  Margin="2"
+                  ItemTapped="Handle_ItemTapped" VerticalScrollBarVisibility="Always" VerticalOptions="StartAndExpand" SeparatorVisibility="Default"
+                      RowHeight="75">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding CourseName}"
+                                  Detail="{Binding FullCourseDates}" />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

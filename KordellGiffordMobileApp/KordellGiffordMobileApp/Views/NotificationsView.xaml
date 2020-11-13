@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KordellGiffordMobileApp.Views.NotificationsView"
+             Title="Notifications">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save"
+                     Clicked="Save_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ContentPage.Content>
+        <StackLayout Margin="10">
+            <Label Text="Notification Settings"
+                HorizontalOptions="CenterAndExpand" 
+                   Margin="10,10,10,10"/>
+            <Label Text="Turn on notifications?"/>
+            <CheckBox x:Name="notificationCheck"
+                    HorizontalOptions="Start"/>
+            <Label Text="Notify Days in Advance:"
+                   Margin="10,10,10,0"/>
+            <Picker x:Name="notificationPicker">
+                <Picker.Items>
+                    <x:String>1</x:String>
+                    <x:String>3</x:String>
+                    <x:String>5</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

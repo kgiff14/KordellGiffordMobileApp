@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       xmlns:views="clr-namespace:KordellGiffordMobileApp.Views"
+       x:Class="KordellGiffordMobileApp.AppShell">
+    <TabBar>
+        <Tab Title="Home"
+             Route="Home"
+             Icon="home.png">
+            <ShellContent>
+                <views:CoursesHomeView />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Degree Plan"
+             Route="DegreePlan"
+             Icon="book.png">
+            <ShellContent>
+                <views:TermView />
+            </ShellContent>
+        </Tab>
+    </TabBar>
+</Shell>

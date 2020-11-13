@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KordellGiffordMobileApp.Android", "KordellGiffordMobileApp\KordellGiffordMobileApp.Android\KordellGiffordMobileApp.Android.csproj", "{127A4B4E-1339-4005-B0FC-A1E25C277163}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KordellGiffordMobileApp", "KordellGiffordMobileApp\KordellGiffordMobileApp\KordellGiffordMobileApp.csproj", "{904F7B17-A312-4EEA-A58B-823C74DAA600}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{127A4B4E-1339-4005-B0FC-A1E25C277163}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{127A4B4E-1339-4005-B0FC-A1E25C277163}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{127A4B4E-1339-4005-B0FC-A1E25C277163}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{127A4B4E-1339-4005-B0FC-A1E25C277163}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{127A4B4E-1339-4005-B0FC-A1E25C277163}.Release|Any CPU.Build.0 = Release|Any CPU
+		{127A4B4E-1339-4005-B0FC-A1E25C277163}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{904F7B17-A312-4EEA-A58B-823C74DAA600}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{904F7B17-A312-4EEA-A58B-823C74DAA600}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{904F7B17-A312-4EEA-A58B-823C74DAA600}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{904F7B17-A312-4EEA-A58B-823C74DAA600}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{904F7B17-A312-4EEA-A58B-823C74DAA600}.Release|Any CPU.Build.0 = Release|Any CPU
+		{904F7B17-A312-4EEA-A58B-823C74DAA600}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {671A7B36-2F1A-4BCF-90E5-7DAE68BBD339}
+	EndGlobalSection
+EndGlobal

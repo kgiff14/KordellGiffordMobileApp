@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="KordellGiffordMobileApp.Views.TermView"
+             Title="Degree Plan">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Edit" 
+                     Clicked="Edit_Clicked"/>
+    </ContentPage.ToolbarItems>
+    <ScrollView>
+        <StackLayout Margin="5">
+            <Picker ItemDisplayBinding="{Binding TermName}"
+                x:Name="PickerTerm"
+                SelectedIndexChanged="OnPickerSelectedIndexChanged"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="20" />
+                    <RowDefinition Height="20"/>
+                </Grid.RowDefinitions>
+                <Label Text="Start Date:"
+                   Grid.Row="0"
+                   Grid.Column="0"/>
+                <Label Text="End Date:"
+                   Grid.Row="0"
+                   Grid.Column="1"/>
+                <Label Grid.Row="1"
+                   Grid.Column="0"
+                   x:Name="startLabel"/>
+                <Label Grid.Row="1"
+                   Grid.Column="1"
+                   x:Name="endLabel"/>
+            </Grid>
+            <Label Text="Courses:"
+               Margin="10"/>
+            <ListView x:Name="MyListView"
+                  CachingStrategy="RecycleElement"
+                  Margin="10"
+                  ItemTapped="Handle_ItemTapped" VerticalScrollBarVisibility="Always" VerticalOptions="Center" SeparatorVisibility="Default"
+                      RowHeight="75">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding CourseName}"
+                        Detail="{Binding FullCourseDates}">
+                            <TextCell.ContextActions>
+                                <MenuItem Text="Edit Courses"
+                                  Clicked="EditCourse_Clicked"/>
+                            </TextCell.ContextActions>
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button Text="Add Course" 
+                HorizontalOptions="Center"
+                Clicked="AddCourse_Clicked"/>
+            <Grid>
+                <Label Text="Tap to delete course"
+                   HorizontalOptions="Center"
+                   Grid.Column="0"/>
+                <Label Text="Hold to edit courses"
+                   HorizontalOptions="Center"
+                   Grid.Column="1"/>
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>
